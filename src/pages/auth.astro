@@ -1,8 +1,5 @@
 ---
-import { getSiteInfo } from "../lib/api";
-
-const data = await getSiteInfo();
-const siteInfo = data.siteInfo;
+// import AuthForm from '../components/AuthForm.vue';
 ---
 
 <html lang="en">
@@ -14,7 +11,8 @@ const siteInfo = data.siteInfo;
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>index.astro</h1>
-		<pre>{siteInfo}</pre>
+		<h1>auth.astro</h1>
+
+		<!-- <AuthForm /> -->
 	</body>
 </html>
