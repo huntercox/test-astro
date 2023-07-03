@@ -1,5 +1,9 @@
 ---
-// import AuthForm from '../components/AuthForm.vue';
+// import { AuthForm } from "../components/auth-form";
+import { getDraftPosts } from "../lib/api";
+
+const data = await getDraftPosts();
+console.log(data);
 ---
 
 <html lang="en">
