@@ -1,5 +1,5 @@
 ---
-// import { AuthForm } from "../components/auth-form";
+import AuthForm from "../components/AuthForm.vue";
 import { getDraftPosts } from "../lib/api";
 
 const data = await getDraftPosts();
@@ -17,6 +17,6 @@ console.log(data);
 	<body>
 		<h1>auth.astro</h1>
 
-		<!-- <AuthForm /> -->
+		<AuthForm url={import.meta.env.WORDPRESS_API_URL} client:only />
 	</body>
 </html>
