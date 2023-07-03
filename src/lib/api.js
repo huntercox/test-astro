@@ -37,3 +37,30 @@ export async function getDraftPosts() {
 	console.log(data);
 	return data;
 }
+
+export async function getPrimaryNavMenu() {
+	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
+		method: 'post',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			query: `{
+							menus(where: {location: MENU_1}) {
+								nodes {
+									name
+									menuItems {
+											nodes {
+													uri
+													url
+													order
+													label
+											}
+									}
+								}
+							}
+					}
+					`
+		})
+	});
+	const { data } = await response.json();
+	return data;
+}

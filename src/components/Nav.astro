@@ -1,0 +1,16 @@
+---
+const { menu } = Astro.props;
+---
+
+<nav>
+	<ul>
+		<!-- {menu[0].label} -->
+		{
+			menu.map((item) => (
+				<li>
+					<a href={item.label}>{item.label}</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>

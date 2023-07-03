@@ -1,10 +1,11 @@
 ---
 import Header from "../components/Header.astro";
-import { getSiteInfo } from "../lib/api";
+import { getPrimaryNavMenu, getSiteInfo } from "../lib/api";
 const { generalSettings } = await getSiteInfo();
+const { menus } = await getPrimaryNavMenu();
+const primaryMenu = menus.nodes[0];
 
 const { title, description } = Astro.props;
-console.log(Astro.props);
 ---
 
 <html lang="en">
@@ -18,7 +19,7 @@ console.log(Astro.props);
 	</head>
 	<body>
 		<main>
-			<Header generalSettings={generalSettings} />
+			<Header generalSettings={generalSettings} menu={primaryMenu} />
 			<hr />
 			<slot />
 		</main>
