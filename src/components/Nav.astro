@@ -4,11 +4,14 @@ const { menu } = Astro.props;
 
 <nav>
 	<ul>
+		<li>
+			<a href="/">Home</a>
+		</li>
 		<!-- {menu[0].label} -->
 		{
 			menu.map((item) => (
 				<li>
-					<a href={item.label}>{item.label}</a>
+					<a href={item.uri || "/"}>{item.label}</a>
 				</li>
 			))
 		}
