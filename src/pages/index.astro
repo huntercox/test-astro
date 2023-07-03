@@ -2,7 +2,9 @@
 import { getSiteInfo } from "../lib/api";
 
 const data = await getSiteInfo();
-const siteInfo = data.siteInfo;
+console.log(data);
+
+let title = data.generalSettings.title;
 ---
 
 <html lang="en">
@@ -11,10 +13,10 @@ const siteInfo = data.siteInfo;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>index.astro</title>
 	</head>
 	<body>
 		<h1>index.astro</h1>
-		<pre>{siteInfo}</pre>
+		<p>title: {title}</p>
 	</body>
 </html>
