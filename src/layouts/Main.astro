@@ -1,0 +1,38 @@
+---
+import Header from "../components/Header.astro";
+import { getSiteInfo } from "../lib/api";
+const { generalSettings } = await getSiteInfo();
+
+const { title, description } = Astro.props;
+console.log(Astro.props);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{`${title} | ${generalSettings.title}`}</title>
+		<meta name="description" content={description} />
+	</head>
+	<body>
+		<main>
+			<Header generalSettings={generalSettings} />
+			<hr />
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	body {
+		font-family: "Open Sans", sans-serif;
+		font-size: 18px;
+	}
+	main {
+		width: 100%;
+		max-width: 1024px;
+		margin: auto;
+	}
+</style>

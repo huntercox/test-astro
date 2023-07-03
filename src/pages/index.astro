@@ -1,22 +1,10 @@
 ---
-import { getSiteInfo } from "../lib/api";
-
-const data = await getSiteInfo();
-console.log(data);
-
-let title = data.generalSettings.title;
+import MainLayout from "../layouts/Main.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>index.astro</title>
-	</head>
-	<body>
-		<h1>index.astro</h1>
-		<p>title: {title}</p>
-	</body>
-</html>
+<MainLayout title="Home Page">
+	<article>
+		<h1>Home Page</h1>
+		<p>This is the home page.</p>
+	</article>
+</MainLayout>

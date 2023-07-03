@@ -6,6 +6,7 @@ export async function getSiteInfo() {
 			query: `{
 						generalSettings {
 								title
+								description
 						}
 				}
 				`
