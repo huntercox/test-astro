@@ -17,3 +17,28 @@ const { menu } = Astro.props;
 		}
 	</ul>
 </nav>
+
+<style lang="scss">
+	nav {
+		ul {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			li {
+				margin-left: 1rem;
+				a {
+					text-decoration: none;
+					color: #000;
+					font-weight: bold;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+</style>
