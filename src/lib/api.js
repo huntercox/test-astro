@@ -44,7 +44,7 @@ export async function getPrimaryNavMenu() {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			query: `{
-							menus(where: {location: MENU_1}) {
+							menus(where: {location: PRIMARY}) {
 								nodes {
 									name
 									menuItems {
