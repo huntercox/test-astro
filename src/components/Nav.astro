@@ -1,16 +1,19 @@
 ---
-const { menu } = Astro.props;
+export const prerender = true;
+import { getNavMenu } from "../lib/api";
+const menu = await getNavMenu();
+let myMenu = menu.menuItems.nodes;
 ---
 
 <nav>
 	<ul>
-		{menu}
+		<!-- {JSON.stringify(menu)} -->
 		<li>
 			<a href="/">Home</a>
 		</li>
 
 		{
-			menu?.map((item) => (
+			myMenu.map((item) => (
 				<li>
 					<a href={item.uri || "/"}>{item.label}</a>
 				</li>

@@ -1,8 +1,8 @@
 ---
+export const prerender = true;
 import Header from "../components/Header.astro";
-import { getNavMenu, getSiteInfo } from "../lib/api";
+import { getSiteInfo } from "../lib/api";
 const { generalSettings } = await getSiteInfo();
-const { menu } = await getNavMenu();
 
 const { title, description } = Astro.props;
 ---
@@ -18,7 +18,7 @@ const { title, description } = Astro.props;
 	</head>
 	<body>
 		<main class="site">
-			<Header generalSettings={generalSettings} menu={menu} />
+			<Header generalSettings={generalSettings} />
 			<hr />
 			<slot />
 		</main>

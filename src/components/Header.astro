@@ -1,9 +1,7 @@
 ---
-// import Nav from "../components/Nav.astro";
-
+export const prerender = true;
+import Nav from "../components/Nav.astro";
 const { generalSettings } = Astro.props;
-
-// menu.menuItems.nodes.map((x) => console.log(x.label));
 ---
 
 <header class="site__header">
@@ -13,7 +11,7 @@ const { generalSettings } = Astro.props;
 			<p>{generalSettings.description}</p>
 		</div>
 
-		<!-- <Nav menu={menu} /> -->
+		<Nav />
 	</div>
 </header>
 
