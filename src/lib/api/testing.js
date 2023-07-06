@@ -1,65 +1,9 @@
-export async function getSiteInfo() {
-	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
-		method: 'post',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			query: `{
-						generalSettings {
-								title
-								description
-						}
-				}
-				`
-		})
-	});
-	const { data } = await response.json();
-	// console.log(data);
-	return data;
-}
-
-// Protected API route
-export async function getDraftPosts() {
-	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
-		method: 'post',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			query: `{
-					pages(where: {status: DRAFT}) {
-						nodes {
-							title
-						}
-					}
-				}
-				`
-		})
-	});
-	const { data } = await response.json();
-	// console.log(data);
-	return data;
-}
-
-
-
-export async function getNavMenu() {
-	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
-		method: 'post',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			query: `{
-				menuItems(where: {location: MENU_1}) {
-					nodes {
-						label
-						uri
-					}
-				}
-			}`
-		})
-	});
-	const { data } = await response.json();
-	return data;
-}
-
-
+/**
+ * This is used for dynamic routing within WordPress so that any post or taxonomy term has a route
+ *
+ * @param {*} uri
+ * @returns
+ */
 export async function getNodeByURI(uri) {
 	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
 		method: 'post',
@@ -133,7 +77,12 @@ export async function getNodeByURI(uri) {
 	return data;
 }
 
-
+/**
+ * Get all URIs from WordPress
+ *  - from posts, pages, and taxonomy terms
+ *
+ * @returns data
+ */
 export async function getAllUris() {
 	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
 		method: 'post',

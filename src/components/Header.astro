@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
-import Nav from "../components/Nav.astro";
-const { generalSettings } = Astro.props;
+const { navMenu, generalSettings } = Astro.props;
 ---
 
 <header class="site__header">
@@ -11,7 +10,20 @@ const { generalSettings } = Astro.props;
 			<p>{generalSettings.description}</p>
 		</div>
 
-		<Nav />
+		<nav>
+			<ul>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				{
+					navMenu.nodes.map((item) => (
+						<li>
+							<a href={item.uri || "/"}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
 	</div>
 </header>
 
@@ -39,6 +51,28 @@ const { generalSettings } = Astro.props;
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
+		}
+
+		nav {
+			ul {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				li {
+					margin-left: 1rem;
+					a {
+						text-decoration: none;
+						color: #000;
+						font-weight: bold;
+					}
+					a:hover {
+						text-decoration: underline;
+					}
+				}
+			}
 		}
 	}
 </style>
