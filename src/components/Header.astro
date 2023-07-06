@@ -1,8 +1,8 @@
 ---
-import Nav from "../components/Nav.astro";
+// import Nav from "../components/Nav.astro";
 
-const { menu, generalSettings } = Astro.props;
-// console.log(menu.menuItems.nodes);
+const { generalSettings } = Astro.props;
+
 // menu.menuItems.nodes.map((x) => console.log(x.label));
 ---
 
@@ -13,7 +13,7 @@ const { menu, generalSettings } = Astro.props;
 			<p>{generalSettings.description}</p>
 		</div>
 
-		<Nav menu={menu?.menuItems?.nodes} />
+		<!-- <Nav menu={menu} /> -->
 	</div>
 </header>
 

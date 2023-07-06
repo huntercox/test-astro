@@ -4,12 +4,13 @@ const { menu } = Astro.props;
 
 <nav>
 	<ul>
+		{menu}
 		<li>
 			<a href="/">Home</a>
 		</li>
-		<!-- {menu[0].label} -->
+
 		{
-			menu.map((item) => (
+			menu?.map((item) => (
 				<li>
 					<a href={item.uri || "/"}>{item.label}</a>
 				</li>
@@ -33,10 +34,9 @@ const { menu } = Astro.props;
 					text-decoration: none;
 					color: #000;
 					font-weight: bold;
-
-					&:hover {
-						text-decoration: underline;
-					}
+				}
+				a:hover {
+					text-decoration: underline;
 				}
 			}
 		}

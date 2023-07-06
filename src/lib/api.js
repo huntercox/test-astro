@@ -40,20 +40,16 @@ export async function getDraftPosts() {
 
 
 
-export async function getPrimaryNavMenu() {
+export async function getNavMenu() {
 	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
 		method: 'post',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			query: `{
-				menus {
+				menuItems(where: {location: MENU_1}) {
 					nodes {
-						menuItems {
-							nodes {
-								title
-								uri
-							}
-						}
+						label
+						uri
 					}
 				}
 			}`

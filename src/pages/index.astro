@@ -1,6 +1,10 @@
 ---
 export const prerender = true;
 import MainLayout from "../layouts/Main.astro";
+import { getNavMenu, getSiteInfo } from "../lib/api";
+
+const navMenu = await getNavMenu();
+const siteInfo = await getSiteInfo();
 ---
 
 <MainLayout title="Home Page">
@@ -8,6 +12,13 @@ import MainLayout from "../layouts/Main.astro";
 		<article>
 			<h1>Home Page</h1>
 			<p>This is the home page.</p>
+			<pre>
+			{JSON.stringify(navMenu, null, 2)}
+			</pre>
+			<br />
+			<pre>
+			{JSON.stringify(siteInfo, null, 2)}
+			</pre>
 		</article>
 	</div>
 </MainLayout>
