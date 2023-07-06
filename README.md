@@ -1,3 +1,2 @@
-# Just testing out Astro...
-
-Seems pretty quick and easy to setup.. so far!
+# New Version of My Website
+## ... but built with Astro, GraphQL and Headless WP.
