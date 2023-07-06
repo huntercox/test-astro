@@ -13,7 +13,7 @@ const { menu, generalSettings } = Astro.props;
 			<p>{generalSettings.description}</p>
 		</div>
 
-		<Nav menu={menu.menuItems.nodes} />
+		<Nav menu={menu?.menuItems?.nodes} />
 	</div>
 </header>
 
