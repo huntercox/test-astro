@@ -2,6 +2,9 @@
 export const prerender = true;
 import MainLayout from "../layouts/Main.astro";
 // import homepage query from api
+import { getHomePageContent } from "../lib/api/pages/home";
+const { pageBy } = await getHomePageContent();
+console.log(pageBy);
 ---
 
 <MainLayout title="Home Page">

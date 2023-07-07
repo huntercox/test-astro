@@ -1,6 +1,6 @@
 ---
 import AuthForm from "../components/AuthForm.vue";
-import { getDraftPosts } from "../lib/api";
+import { getDraftPosts } from "../lib/api/protected";
 
 const data = await getDraftPosts();
 console.log(data);
