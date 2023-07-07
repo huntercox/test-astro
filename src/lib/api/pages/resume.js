@@ -8,13 +8,30 @@ export async function getEmployers() {
 					nodes {
 						title
 						content
+						employmentDetails {
+							jobTitle
+							location
+							status {
+								currentEmployer
+								startDate {
+									month
+									year
+								}
+								lengthOfEmployment {
+									months
+									years
+								}
+								endDate {
+									month
+									year
+								}
+							}
+						}
 					}
 				}
 			}`
 		})
 	});
-	// const res = await response.json();
-	// console.log(res.data.employers);
 	const { data } = await response.json();
 	return data;
 }

@@ -42,11 +42,169 @@ console.log(pageBy, employers);
 			{
 				employers?.employers.nodes.map((employer) => (
 					<div class="employer">
-						<h3>{employer?.title}</h3>
-						<div class="employer-content" set:html={employer?.content} />
+						<h2 class="employer__name">{employer?.title}</h2>
+						<div class="employer__info">
+							<h5 class="employer__job-title">
+								{employer.employmentDetails.jobTitle}
+							</h5>
+							<div class="employer__dates">
+								<div class="employer__dates__start-date">
+									<span>Start Date:</span>
+									{employer.employmentDetails.status.startDate.month}
+									{employer.employmentDetails.status.startDate.year}
+								</div>
+							</div>
+							<div
+								class="employer__job-description"
+								set:html={employer?.content}
+							/>
+						</div>
 					</div>
 				))
 			}
 		</div>
 	</div>
 </MainLayout>
+
+<style lang="scss">
+	@import "../styles/vars";
+
+	.employers {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+
+		@media (max-width: 992px) {
+			gap: 10px;
+		}
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			gap: 0px;
+		}
+	}
+
+	.employer {
+		margin-bottom: 1rem;
+		border-radius: 3px;
+		border: 1px solid $green;
+		overflow: hidden;
+		margin-bottom: 0;
+
+		// Current Employer
+		&--current {
+			border-color: $yellow;
+			position: relative;
+
+			.employer__name {
+				background-color: $yellow;
+				border-color: $yellow;
+				color: $dark;
+			}
+
+			&::after {
+				content: "Current";
+				position: absolute;
+				top: 0;
+				right: 0;
+				font-size: 18px;
+				font-variation-settings: "MONO" 1, "CASL" 0.5, "wght" 800, "slnt" 0,
+					"CRSV" 1;
+				padding: 5px 10px;
+				background-color: $white;
+			}
+		}
+
+		&__info {
+			padding: 12px;
+		}
+
+		// Employer Name
+		&__name {
+			position: relative;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+			font-size: 22px;
+			margin-bottom: 0px;
+			padding-left: 10px;
+		}
+
+		// Job Title
+		&__job-title {
+			font-size: 18px;
+			font-variation-settings: "MONO" 1, "CASL" 0.5, "wght" 800, "slnt" 0,
+				"CRSV" 1;
+			color: $pink;
+			margin-bottom: 10px;
+		}
+
+		// Dates
+		&__dates {
+			margin-bottom: 8px;
+
+			> div span {
+				width: 120px;
+				text-align: right;
+				font-variation-settings: "MONO" 1, "CASL" 0.5, "wght" 800, "slnt" 0,
+					"CRSV" 1;
+				color: $yellow;
+			}
+			// Lenght of Time
+			&__length-of-employment {
+				font-size: 14px;
+				font-variation-settings: "MONO" 1, "CASL" 0.5, "wght" 800, "slnt" 0,
+					"CRSV" 1;
+				// color: lighten($yellow), 20%;
+				position: relative;
+				text-indent: 20px;
+				padding-top: 4px;
+
+				&::before {
+					content: "";
+					background-color: $yellow;
+					height: 1px;
+					width: 15px;
+					position: absolute;
+					left: 0;
+					top: 12px;
+				}
+			}
+		}
+
+		// Description
+		&__job-description {
+			p {
+				line-height: 1.25;
+				font-size: 15px;
+			}
+		}
+
+		// Skills Used
+		&__skills-used {
+			span {
+				color: $pink;
+				font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800, "slnt" -14,
+					"CRSV" 1;
+				border-bottom: 1px solid $pink;
+				display: block;
+				padding: 4px;
+			}
+			ul {
+				margin-top: 0px;
+				margin-left: 10px;
+				border-left: 1px solid $pink;
+				padding-top: 6px;
+				padding-left: 10px;
+				column-count: 2;
+				column-gap: 10px;
+
+				li {
+					font-size: 14px;
+					font-variation-settings: "MONO" 1, "CASL" 1, "wght" 400, "slnt" -14,
+						"CRSV" 1;
+				}
+			}
+		}
+	}
+</style>
