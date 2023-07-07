@@ -8,5 +8,12 @@ console.log(pageBy);
 ---
 
 <MainLayout title="Home Page">
-	<div class="container"></div>
+	<div class="container">
+		{
+			// map pageBy.flexLayouts.flexLayouts
+			pageBy.flexLayouts.flexLayouts.map((layout) => (
+				<pre>{layout.fieldGroupName}</pre>
+			))
+		}
+	</div>
 </MainLayout>
