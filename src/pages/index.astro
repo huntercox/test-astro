@@ -10,10 +10,31 @@ console.log(pageBy);
 <MainLayout title="Home Page">
 	<div class="container">
 		{
-			// map pageBy.flexLayouts.flexLayouts
-			pageBy.flexLayouts.flexLayouts.map((layout) => (
-				<pre>{layout.fieldGroupName}</pre>
-			))
+			pageBy.flexLayouts.flexLayouts.forEach((item) => {
+				let type = item.fieldGroupName;
+
+				switch (type) {
+					case "ContentNode_Flexlayouts_FlexLayouts_AdvancedContent":
+					// Perform actions for AdvancedContent
+						console.log("AdvancedContent found:", item);
+						break;
+
+					case "ContentNode_Flexlayouts_FlexLayouts_Hero":
+					// Perform actions for Hero
+						console.log("Hero found:", item);
+						break;
+
+					case "ContentNode_Flexlayouts_FlexLayouts_SectionHeading":
+					// Perform actions for SectionHeading
+						console.log("SectionHeading found:", item);
+						break;
+
+					default:
+						console.log("Unknown type:", type);
+						break;
+				}
+			})
 		}
+		<!-- {JSON.stringify(pageBy)} -->
 	</div>
 </MainLayout>
