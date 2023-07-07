@@ -1,0 +1,118 @@
+@import 'vars';
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.4;
+	color: $green;
+}
+h1 {
+	font-weight: normal;
+	font-family: $font-family;
+	font-size: 2.8rem;
+	font-weight: 800;
+	margin-bottom: 15px;
+	color: $green;
+	text-shadow: 1px 0px 0px $pink;
+	border-bottom: 2px solid $pink;
+}
+
+h2 {
+	font-weight: bold;
+	font-family: $font-family;
+	font-size: 2.2rem;
+	line-height: 1.2;
+	color: $dark;
+	background-color: $green;
+	border: 1px solid $green;
+	border-radius: 5px;
+	padding: 10px 16px 7px 16px;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-weight: bold;
+	font-family: $font-family;
+	font-size: 2rem;
+	color: $white;
+	margin-bottom: 20px;
+}
+
+h4 {
+	font-weight: normal;
+	font-family: $yellow;
+	font-style: italic;
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	font-variation-settings: "MONO" 0.5, "CASL" 1, "wght" 200, "slnt" 0.25, "CRSV" 1;
+	margin-bottom: 15px;
+}
+
+h5 {
+	font-size: 1.6rem;
+	font-weight: bolder;
+	font-family: $font-family;
+	font-variation-settings: "MONO" 0, "CASL" 1, "wght" 900, "slnt" -14, "CRSV" 1;
+	margin-bottom: 15px;
+	color: $pink;
+}
+h6 {
+	font-weight: normal;
+	font-family: $font-family;
+	font-size: 20px;
+	text-transform: uppercase;
+	border: 1px solid $green;
+	border-radius: 4px;
+	padding: 6px 6px 3px 8px;
+	margin-bottom: 15px;
+}
+
+// Paragraphs
+p {
+	font-weight: lighter;
+	line-height: 1.45;
+}
+
+// Links
+a,
+a:visited,
+a:active {
+	color: $pink;
+	font-family: $font-family;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+// Lists
+ul {
+	list-style-type: none;
+	padding-left: 0;
+	li {
+		margin: 0;
+	}
+}
+
+// Italic
+i {
+	font-variation-settings: "MONO" 1, "CASL" 1, "wght" 450, "slnt" -14, "CRSV" 0.25;
+}
+
+// Emphasis
+em {
+	font-variation-settings: "MONO" 1, "CASL" 1, "wght" 600, "slnt" -5, "CRSV" 1;
+}
+
+// Bold
+strong,
+b {
+	font-family: $font-family;
+	font-weight: bold;
+	font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.25;
+}

@@ -6,7 +6,9 @@ const { navMenu, generalSettings } = Astro.props;
 <header class="site__header">
 	<div class="container">
 		<div class="site__brand">
-			<a href="/"><h1>{generalSettings.title}</h1></a>
+			<h1 class="site__title">
+				<a href="/">{generalSettings.title}</a>
+			</h1>
 		</div>
 
 		<nav class="site__nav">
@@ -49,10 +51,11 @@ const { navMenu, generalSettings } = Astro.props;
 			border-bottom: 1px solid $pink;
 			padding: 15px;
 			display: block;
-			height: 100%;
 
-			.header__site-title {
+			.site__title {
 				line-height: 30px;
+				font-size: 18px;
+				margin: 0;
 
 				a {
 					color: $dark;

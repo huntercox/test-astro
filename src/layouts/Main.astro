@@ -18,7 +18,6 @@ const { menuItems, generalSettings } = await getHeaderData();
 	<body>
 		<main class="site">
 			<Header generalSettings={generalSettings} navMenu={menuItems} />
-			<hr />
 			<slot />
 		</main>
 	</body>
@@ -26,6 +25,7 @@ const { menuItems, generalSettings } = await getHeaderData();
 
 <style lang="scss">
 	@import "../styles/vars";
+
 	main {
 		height: 100%;
 		&.site {
