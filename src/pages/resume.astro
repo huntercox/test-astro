@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import MainLayout from "../layouts/Main.astro";
+
+// Fetch Calls
+import { getPageContentByUri } from "../lib/api/global";
+import { getEmployers } from "../lib/api/pages/resume";
+// let pageBy, employers;
+// const { pageBy } = await getPageContentByUri("resume");
+
+export async function setup() {
+	const [pageBy, employers] = await Promise.all([
+		getPageContentByUri("resume"),
+		getEmployers(),
+	]);
+	// console.log({ pageBy, employers });
+
+	return { pageBy, employers };
+}
+const res = await setup();
+console.log(res);
+
+const { pageBy, employers } = res;
+console.log(pageBy, employers);
+
+// console.log(res.employers);
+
+// let title = pageBy?.title;
+// let content = pageBy?.content;
+
+// let myEmployers = employers?.nodes;
+---
+
+<MainLayout title="Resume Page">
+	<div class="container">
+		<!-- <h1>{title}</h1>
+
+		<div class="content" set:html={content} /> -->
+
+		<h2>Employers</h2>
+		<div class="employers">
+			{
+				employers?.employers.nodes.map((employer) => (
+					<div class="employer">
+						<h3>{employer?.title}</h3>
+						<div class="employer-content" set:html={employer?.content} />
+					</div>
+				))
+			}
+		</div>
+	</div>
+</MainLayout>

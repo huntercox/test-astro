@@ -78,3 +78,27 @@ export async function getNavMenu() {
 	const { data } = await response.json();
 	return data;
 }
+
+
+
+
+export async function getPageContentByUri(uri) {
+	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
+		method: 'post',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			query: `query getPageContentByUri ($uri: String!) {
+				pageBy(uri: $uri) {
+					title
+					uri
+					content(format: RENDERED)
+				}
+			}`,
+			variables: {
+				uri: uri
+			}
+		})
+	});
+	const { data } = await response.json();
+	return data;
+}
