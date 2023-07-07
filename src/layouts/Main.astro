@@ -1,10 +1,7 @@
 ---
 export const prerender = true;
+import "../styles/global.scss";
 import Header from "../components/Header.astro";
-// import { getSiteInfo, getNavMenu } from "../lib/api/global";
-// const { generalSettings } = await getSiteInfo();
-// const { navMenu } = await getNavMenu();
-// console.log(navMenu);
 import { getHeaderData } from "../lib/api/components/header";
 const { menuItems, generalSettings } = await getHeaderData();
 ---
@@ -27,34 +24,13 @@ const { menuItems, generalSettings } = await getHeaderData();
 	</body>
 </html>
 
-<style is:global>
-	html,
-	body,
+<style lang="scss">
+	@import "../styles/vars";
 	main {
 		height: 100%;
-	}
-	body {
-		margin: 0;
-		padding: 0;
-
-		font-family: "Open Sans", sans-serif;
-		font-size: 18px;
-		background-color: #ececec;
-	}
-	main.site {
-		background-color: #f7f7f7;
-	}
-	.container {
-		width: 100%;
-		max-width: 992px;
-		margin: auto;
-	}
-	pre,
-	code {
-		width: 100%;
-		max-width: 100%;
-		display: block;
-		white-space: pre-wrap;
-		word-wrap: break-word;
+		&.site {
+			background-color: $dark;
+			color: $white;
+		}
 	}
 </style>

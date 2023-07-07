@@ -5,12 +5,11 @@ const { navMenu, generalSettings } = Astro.props;
 
 <header class="site__header">
 	<div class="container">
-		<div class="site__info">
-			<h1>{generalSettings.title} w/ <strong>ASTRO</strong></h1>
-			<p>{generalSettings.description}</p>
+		<div class="site__brand">
+			<a href="/"><h1>{generalSettings.title}</h1></a>
 		</div>
 
-		<nav>
+		<nav class="site__nav">
 			<ul>
 				<li>
 					<a href="/">Home</a>
@@ -28,48 +27,69 @@ const { navMenu, generalSettings } = Astro.props;
 </header>
 
 <style lang="scss">
-	$gray: #939393;
-	$red: #e74c3c;
-
+	@import "../styles/vars";
 	.site__header {
-		padding: 0 15px;
-		margin: 0;
-		background-color: $gray;
-		border-bottom: 1px solid #ddd;
-		color: #fff;
-
-		h1 {
-			margin-top: 0;
-			padding-top: 10px;
-			color: $red;
-			text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-			font-size: 2.5rem;
-		}
+		background-color: $dark;
+		background: linear-gradient(45deg, $dark 20%, $dark 80%);
+		border-top: 1px solid $green;
+		border-bottom: 1px solid $green;
+		height: 60px;
 
 		.container {
 			display: flex;
-			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
+			height: 100%;
 		}
 
-		nav {
-			ul {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0;
-				margin: 0;
-				list-style: none;
-				li {
-					margin-left: 1rem;
-					a {
+		/* Brand */
+		.site__brand {
+			background-color: $pink;
+			border-top: 1px solid $pink;
+			border-bottom: 1px solid $pink;
+			padding: 15px;
+			display: block;
+			height: 100%;
+
+			.header__site-title {
+				line-height: 30px;
+
+				a {
+					color: $dark;
+					font-variation-settings: "wght" 200;
+
+					&:hover {
 						text-decoration: none;
-						color: #000;
+						font-variation-settings: "wght" 800, "CASL" 1;
+					}
+				}
+			}
+		}
+
+		/* Navigation */
+		.site__nav {
+			ul {
+				list-style: none;
+				display: flex;
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-bottom: 0;
+
+				li {
+					margin-right: 2rem;
+					margin-top: 0;
+					margin-bottom: 0;
+
+					a {
+						color: $pink;
 						font-weight: bold;
 					}
-					a:hover {
-						text-decoration: underline;
+
+					&:first-child {
+						margin-top: 0;
+					}
+					&:last-child {
+						margin-right: 0;
 					}
 				}
 			}
