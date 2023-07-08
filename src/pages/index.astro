@@ -8,6 +8,15 @@ const { pageBy } = await getHomePageContent();
 
 <MainLayout title="Home Page">
 	<div class="container">
-		<h1>Home page static title</h1>
+		<div class="content" set:html={pageBy.content} />
 	</div>
 </MainLayout>
+
+<style lang="scss">
+	@import "../styles/vars";
+
+	.content {
+		font-size: 24px;
+		padding-bottom: 30px;
+	}
+</style>
