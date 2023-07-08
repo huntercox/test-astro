@@ -1,0 +1,29 @@
+---
+export const prerender = true;
+
+const { generalSettings } = Astro.props;
+---
+
+<footer class="site__footer">
+	<div class="container">
+		<p><a href="/">{generalSettings.title}</a></p>
+	</div>
+</footer>
+
+<style lang="scss">
+	@import "../styles/vars";
+
+	.site__footer {
+		margin-top: 200px;
+		border-top: 1px solid $pink;
+		border-bottom: 1px solid $pink;
+
+		p {
+			text-align: center;
+
+			a {
+				color: $green;
+			}
+		}
+	}
+</style>

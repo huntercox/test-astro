@@ -4,6 +4,7 @@ import "../styles/global.scss";
 import Header from "../components/Header.astro";
 import { getHeaderData } from "../lib/api/components/header";
 const { menuItems, generalSettings } = await getHeaderData();
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -19,6 +20,7 @@ const { menuItems, generalSettings } = await getHeaderData();
 		<main class="site">
 			<Header generalSettings={generalSettings} navMenu={menuItems} />
 			<slot />
+			<Footer generalSettings={generalSettings} />
 		</main>
 	</body>
 </html>
