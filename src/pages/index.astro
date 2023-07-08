@@ -4,37 +4,10 @@ import MainLayout from "../layouts/Main.astro";
 // import homepage query from api
 import { getHomePageContent } from "../lib/api/pages/home";
 const { pageBy } = await getHomePageContent();
-console.log(pageBy);
 ---
 
 <MainLayout title="Home Page">
 	<div class="container">
-		{
-			pageBy.flexLayouts.flexLayouts.forEach((item) => {
-				let type = item.fieldGroupName;
-
-				switch (type) {
-					case "ContentNode_Flexlayouts_FlexLayouts_AdvancedContent":
-					// Perform actions for AdvancedContent
-						console.log("AdvancedContent found:", item);
-						break;
-
-					case "ContentNode_Flexlayouts_FlexLayouts_Hero":
-					// Perform actions for Hero
-						console.log("Hero found:", item);
-						break;
-
-					case "ContentNode_Flexlayouts_FlexLayouts_SectionHeading":
-					// Perform actions for SectionHeading
-						console.log("SectionHeading found:", item);
-						break;
-
-					default:
-						console.log("Unknown type:", type);
-						break;
-				}
-			})
-		}
-		<!-- {JSON.stringify(pageBy)} -->
+		<h1>Home page static title</h1>
 	</div>
 </MainLayout>
