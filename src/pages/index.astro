@@ -4,12 +4,44 @@ import MainLayout from "../layouts/Main.astro";
 // import homepage query from api
 import { getHomePageContent } from "../lib/api/pages/home";
 const { pageBy } = await getHomePageContent();
+
+// Github Repos
+
+import { getRepos, getProfileLink } from "../lib/api/github";
+const repos = await getRepos();
+
+const profileLink = await getProfileLink();
 ---
 
 <MainLayout title="Home Page">
 	<div class="container">
 		<div class="content" set:html={pageBy.content} />
 	</div>
+
+	<section class="github-repos">
+		<div class="container">
+			<div class="github-repos__header">
+				<h2>My GitHub Repositories</h2>
+				<a
+					href={profileLink}
+					class="profile-link"
+					target="_blank"
+					rel="noopener noreferrer">GitHub Profile</a
+				>
+			</div>
+			<div class="repos-list">
+				{
+					repos?.map((repo) => (
+						<div class="repo">
+							<a href={repo.url} target="_blank" rel="noopener noreferrer">
+								{repo.name}
+							</a>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
 </MainLayout>
 
 <style lang="scss">
@@ -17,6 +49,44 @@ const { pageBy } = await getHomePageContent();
 
 	.content {
 		font-size: 24px;
-		padding-bottom: 30px;
+		padding-top: 30px;
+		padding-bottom: 50px;
+	}
+
+	.github-repos {
+		background-color: $green;
+		padding: 30px 0 50px 0;
+
+		&__header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+
+			h2 {
+				margin: 0;
+				padding: 0;
+				background-color: none;
+				font-variation-settings: "MONO" 1, "CASL" 1, "wght" 600, "slnt" -5,
+					"CRSV" 1;
+			}
+			.profile-link {
+				background-color: $pink;
+				padding: 10px 20px;
+				color: $dark;
+				font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800, "slnt" -5,
+					"CRSV" 1;
+			}
+		}
+
+		.repos-list {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+		.repo {
+			background-color: $dark;
+			margin: 5px 10px;
+			padding: 20px;
+		}
 	}
 </style>
