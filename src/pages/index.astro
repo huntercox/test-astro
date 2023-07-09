@@ -15,6 +15,7 @@ const profileLink = await getProfileLink();
 
 <MainLayout title="Home Page">
 	<div class="container">
+		{pageBy.title}
 		<div class="content" set:html={pageBy.content} />
 	</div>
 
