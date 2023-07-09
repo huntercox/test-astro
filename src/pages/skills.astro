@@ -1,0 +1,23 @@
+---
+export const prerender = true;
+import MainLayout from "../layouts/Main.astro";
+
+import { getPageContentByUri } from "../lib/api/global";
+const { pageBy } = await getPageContentByUri("skills");
+
+import { getSkills } from "../lib/api/pages/skills";
+const { skills } = await getSkills();
+
+console.log(pageBy);
+---
+
+<MainLayout title="Skills Page">
+	<div class="container">
+		<h1>{pageBy.title}</h1>
+		<div class="content" set:html={pageBy.content} />
+
+		<div class="skills-list">
+			{skills.nodes.map((skill) => <div class="skill">{skill.title}</div>)}
+		</div>
+	</div>
+</MainLayout>
