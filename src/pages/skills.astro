@@ -8,7 +8,7 @@ const { pageBy } = await getPageContentByUri("skills");
 import { getSkills } from "../lib/api/pages/skills";
 const { skills } = await getSkills();
 
-console.log(pageBy);
+// console.log(pageBy);
 ---
 
 <MainLayout title="Skills Page">
@@ -17,7 +17,13 @@ console.log(pageBy);
 		<div class="content" set:html={pageBy.content} />
 
 		<div class="skills-list">
-			{skills.nodes.map((skill) => <div class="skill">{skill.title}</div>)}
+			{
+				skills.nodes.map((skill) => (
+					<div class="skill">
+						<a href={`/skills/${skill.slug}`}>{skill.title}</a>
+					</div>
+				))
+			}
 		</div>
 	</div>
 </MainLayout>

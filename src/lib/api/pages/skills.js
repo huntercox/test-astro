@@ -7,6 +7,7 @@ export async function getSkills() {
 				skills {
 					nodes {
 						title
+						slug
 					}
 				}
 			}`

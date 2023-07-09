@@ -1,0 +1,36 @@
+---
+import { getSkills } from "../../lib/api/pages/skills";
+
+export function extractSlugs(skills) {
+	return skills.nodes.map((skill) => {});
+}
+
+export async function getStaticPaths() {
+	const skills = await getSkills();
+	console.log(skills);
+
+	return skills.skills.nodes.map((skill) => {
+		return {
+			params: {
+				skill: skill.slug,
+			},
+		};
+	});
+}
+
+const { skill } = Astro.params;
+
+import MainLayout from "../../layouts/Main.astro";
+
+import { getSkillData } from "../../lib/api/components/skill";
+
+const { skillBy } = await getSkillData(skill);
+console.log(skillBy);
+---
+
+<MainLayout title="Skill single">
+	<div class="container">
+		<h3>My Skill: {skillBy.title}!</h3>
+		<div class="content" set:html={skillBy.content} />
+	</div>
+</MainLayout>
