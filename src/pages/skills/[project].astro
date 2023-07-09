@@ -1,0 +1,36 @@
+---
+import { getProjects } from "../../lib/api/pages/projects";
+
+export function extractSlugs(projects) {
+	return projects.nodes.map((project) => {});
+}
+
+export async function getStaticPaths() {
+	const projects = await getProjects();
+	console.log(projects);
+
+	return projects.projects.nodes.map((project) => {
+		return {
+			params: {
+				project: project.slug,
+			},
+		};
+	});
+}
+
+const { project } = Astro.params;
+
+import MainLayout from "../../layouts/Main.astro";
+
+import { getProjectData } from "../../lib/api/components/project";
+
+const { projectBy } = await getProjectData(project);
+console.log(projectBy);
+---
+
+<MainLayout title="project single">
+	<div class="container">
+		<h3>My project: {projectBy.title}!</h3>
+		<div class="content" set:html={projectBy.content} />
+	</div>
+</MainLayout>

@@ -1,0 +1,31 @@
+---
+export const prerender = true;
+import MainLayout from "../layouts/Main.astro";
+
+import { getPageContentByPageId } from "../lib/api/global";
+const { pageBy } = await getPageContentByPageId(314);
+
+import { getProjects } from "../lib/api/pages/projects";
+const { projects } = await getProjects();
+
+// console.log(pageBy);
+---
+
+<MainLayout title="Projects Page">
+	<div class="container">
+		<h1>{pageBy.title}</h1>
+		<div class="content" set:html={pageBy.content} />
+
+		<div class="projects-list">
+			{
+				projects.nodes.map((project) => {
+					return (
+						<div class="project">
+							<a href={`/projects/${project.slug}`}>{project.title}</a>
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
+</MainLayout>

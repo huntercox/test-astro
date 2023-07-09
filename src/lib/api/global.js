@@ -103,3 +103,25 @@ export async function getPageContentByUri(uri) {
 	// console.log(data);
 	return data;
 }
+
+export async function getPageContentByPageId(pageId) {
+	const response = await fetch(import.meta.env.WORDPRESS_API_URL, {
+		method: 'post',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			query: `query getPageContentByPageId($pageId: Int!) {
+				pageBy(pageId: $pageId) {
+					title
+					uri
+					content(format: RENDERED)
+				}
+			}`,
+			variables: {
+				pageId: pageId
+			}
+		})
+	});
+	const { data } = await response.json();
+	// console.log(data);
+	return data;
+}
