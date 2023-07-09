@@ -8,6 +8,17 @@ const { pageBy } = await getPageContentByUri("skills");
 import { getSkills } from "../lib/api/pages/skills";
 const { skills } = await getSkills();
 
+const colors = [
+	"dark",
+	"indigo",
+	"green",
+	"pink",
+	"yellow",
+	"blue",
+	"red",
+	"purple",
+];
+
 // console.log(pageBy);
 ---
 
@@ -18,11 +29,14 @@ const { skills } = await getSkills();
 
 		<div class="skills-list">
 			{
-				skills.nodes.map((skill) => (
-					<div class="skill">
-						<a href={`/skills/${skill.slug}`}>{skill.title}</a>
-					</div>
-				))
+				skills.nodes.map((skill, index) => {
+					const color = colors[index % colors.length];
+					return (
+						<div class={`skill color--${color}`}>
+							<a href={`/skills/${skill.slug}`}>{skill.title}</a>
+						</div>
+					);
+				})
 			}
 		</div>
 	</div>
