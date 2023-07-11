@@ -14,3 +14,9 @@ $black: #16023D;
 /* FONTS */
 @import '@fontsource-variable/recursive';
 $font-family: 'Recursive Variable', sans-serif;
+
+
+/* MEDIA QUERY BREAKPOINTS */
+$tablet: 768px;
+$laptop: 992px;
+$desktop: 1200px;

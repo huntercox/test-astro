@@ -1,15 +1,17 @@
 ---
 export const prerender = true;
 import MainLayout from "../layouts/Main.astro";
+// import smooth scroll
+import smoothScroll from "../lib/smooth-scroll.js";
+
 // import homepage query from api
 import { getHomePageContent } from "../lib/api/pages/home";
 const { pageBy } = await getHomePageContent();
 
 // Github Repos
-
 import { getRepos, getProfileLink } from "../lib/api/github";
 const repos = await getRepos();
-
+// Github Profile Link
 const profileLink = await getProfileLink();
 ---
 
@@ -20,6 +22,7 @@ const profileLink = await getProfileLink();
 	</div>
 
 	<section class="github-repos">
+		<div class="smooth-scroll-anchor" id="projects"></div>
 		<div class="container">
 			<div class="github-repos__header">
 				<h2>My GitHub Repositories</h2>
@@ -43,20 +46,26 @@ const profileLink = await getProfileLink();
 			</div>
 		</div>
 	</section>
+
+	<script>
+		{
+			smoothScroll;
+		}
+	</script>
 </MainLayout>
 
 <style lang="scss">
 	@import "../styles/vars";
 
 	.content {
-		font-size: 24px;
+		font-size: 18px;
 		padding-top: 30px;
 		padding-bottom: 50px;
 	}
 
 	.github-repos {
 		background-color: $green;
-		padding: 30px 0 50px 0;
+		padding: 0px 0 50px 0;
 
 		&__header {
 			display: flex;

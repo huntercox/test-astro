@@ -13,16 +13,19 @@ const { navMenu, generalSettings } = Astro.props;
 
 		<nav class="site__nav">
 			<ul>
-				<li>
+				<!-- <li>
 					<a href="/">Home</a>
+				</li> -->
+				<li>
+					<a href="#projects">Projects</a>
 				</li>
-				{
+				<!-- {
 					navMenu.nodes.map((item) => (
 						<li>
 							<a href={item.uri || "/"}>{item.label}</a>
 						</li>
 					))
-				}
+				} -->
 			</ul>
 		</nav>
 	</div>

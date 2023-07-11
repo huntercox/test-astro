@@ -3,11 +3,26 @@ export async function getProjects() {
 		method: 'post',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
-			query: `{
-				projects {
+			query: `query getProjects {
+				projects(first: 30) {
 					nodes {
 						title
 						slug
+						terms {
+							nodes {
+								name
+							}
+						}
+						projectDate {
+							projectDate
+						}
+					}
+				}
+				terms(where: {taxonomies: CATEGORY}) {
+					edges {
+						node {
+							name
+						}
 					}
 				}
 			}`
