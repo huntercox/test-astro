@@ -1,8 +1,5 @@
 ---
 export const prerender = true;
-import MainLayout from "../layouts/Main.astro";
-
-// Fetch Calls
 import { getPageContentByUri } from "../lib/api/global";
 import { getEmployers } from "../lib/api/pages/resume";
 
@@ -19,7 +16,9 @@ const res = await setup();
 const { pageBy, employers } = res;
 ---
 
-<MainLayout title="Resume Page">
+<section class="resume">
+	<div class="smooth-scroll-anchor" id="resume"></div>
+
 	<div class="container">
 		<h1>{pageBy.pageBy.title}</h1>
 
@@ -63,7 +62,7 @@ const { pageBy, employers } = res;
 			}
 		</div>
 	</div>
-</MainLayout>
+</section>
 
 <style lang="scss">
 	@import "../styles/vars";
