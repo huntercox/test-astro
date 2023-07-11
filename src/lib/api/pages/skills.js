@@ -4,7 +4,7 @@ export async function getSkills() {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			query: `{
-				skills {
+				skills(first: 30, where: {orderby: {order: ASC, field: DATE}}) {
 					nodes {
 						title
 						slug

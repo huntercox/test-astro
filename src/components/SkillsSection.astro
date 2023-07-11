@@ -30,7 +30,7 @@ const colors = [
 					const color = colors[index % colors.length];
 					return (
 						<div class={`skill color--${color}`}>
-							<a href={`/skills/${skill.slug}`}>{skill.title}</a>
+							<p>{skill.title}</p>
 							{skill.skillDetails.experience.years && (
 								<span>{skill.skillDetails.experience.years}y</span>
 							)}
@@ -41,3 +41,25 @@ const colors = [
 		</div>
 	</div>
 </section>
+
+<style lang="scss">
+	@import "../styles/vars";
+
+	.skills {
+		&-list {
+			column-count: 3;
+			column-gap: 20px;
+
+			.skill {
+				text-align: center;
+				p {
+					color: $pink;
+					font-size: 18px;
+					line-height: 2;
+					margin-bottom: 10px;
+					display: inline;
+				}
+			}
+		}
+	}
+</style>
