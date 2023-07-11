@@ -8,6 +8,11 @@ export async function getSkills() {
 					nodes {
 						title
 						slug
+						skillDetails {
+							experience {
+								years
+							}
+						}
 					}
 				}
 			}`

@@ -1,0 +1,43 @@
+---
+export const prerender = true;
+// Skills page content
+import { getPageContentByUri } from "../lib/api/global";
+const { pageBy } = await getPageContentByUri("skills");
+// Skills custom post-type posts
+import { getSkills } from "../lib/api/pages/skills";
+const { skills } = await getSkills();
+
+const colors = [
+	"dark",
+	"indigo",
+	"green",
+	"pink",
+	"yellow",
+	"blue",
+	"red",
+	"purple",
+];
+---
+
+<section class="skills">
+	<div class="smooth-scroll-anchor" id="skills"></div>
+	<div class="container">
+		<h2>My Skills</h2>
+
+		<div class="skills-list">
+			{
+				skills.nodes.map((skill, index) => {
+					const color = colors[index % colors.length];
+					return (
+						<div class={`skill color--${color}`}>
+							<a href={`/skills/${skill.slug}`}>{skill.title}</a>
+							{skill.skillDetails.experience.years && (
+								<span>{skill.skillDetails.experience.years}y</span>
+							)}
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
