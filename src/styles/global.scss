@@ -16,12 +16,14 @@ body {
 	color: $white;
 }
 .container {
-	width: 100%;
+	width: 90%;
+	max-width: 90%;
 	margin: 0 auto;
-	padding-left: 15px;
-	padding-right: 15px;
-	max-width: none;
 
+
+	@media (min-width: $phone) {
+		max-width: 600px;
+	}
 	@media (min-width: $tablet) {
 		max-width: 760px;
 	}

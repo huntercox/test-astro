@@ -63,10 +63,10 @@ const profileLink = await getProfileLink();
 		}
 
 		.repos-list {
-			display: grid;
-			grid-template-columns: 1fr;
+			display: block;
 
 			@media (min-width: $tablet) {
+				display: grid;
 				gap: 20px;
 				grid-template-columns: 1fr 1fr;
 			}
@@ -79,6 +79,11 @@ const profileLink = await getProfileLink();
 			background-color: $dark;
 			margin: 5px 0;
 			padding: 20px;
+			word-wrap: break-word;
+
+			a {
+				display: block;
+			}
 		}
 	}
 </style>

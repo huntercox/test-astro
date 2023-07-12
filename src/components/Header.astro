@@ -1,6 +1,6 @@
 ---
 export const prerender = true;
-const { navMenu, generalSettings } = Astro.props;
+const { generalSettings } = Astro.props;
 ---
 
 <header class="site__header">
@@ -8,14 +8,12 @@ const { navMenu, generalSettings } = Astro.props;
 		<div class="site__brand">
 			<h1 class="site__title">
 				<a href="/">{generalSettings.title}</a>
+				<a class="mobile" href="/">hc.dev</a>
 			</h1>
 		</div>
 
 		<nav class="site__nav">
 			<ul>
-				<!-- <li>
-					<a href="/">Home</a>
-				</li> -->
 				<li>
 					<a href="#projects">Projects</a>
 				</li>
@@ -25,13 +23,6 @@ const { navMenu, generalSettings } = Astro.props;
 				<li>
 					<a href="#skills">Skills</a>
 				</li>
-				<!-- {
-					navMenu.nodes.map((item) => (
-						<li>
-							<a href={item.uri || "/"}>{item.label}</a>
-						</li>
-					))
-				} -->
 			</ul>
 		</nav>
 	</div>
@@ -51,6 +42,8 @@ const { navMenu, generalSettings } = Astro.props;
 			align-items: center;
 			justify-content: space-between;
 			height: 100%;
+			max-width: none !important;
+			width: 100%;
 		}
 
 		/* Brand */
@@ -62,17 +55,34 @@ const { navMenu, generalSettings } = Astro.props;
 			display: block;
 
 			.site__title {
-				line-height: 30px;
-				font-size: 18px;
 				margin: 0;
+				line-height: 30px;
+				font-size: 15px;
+
+				@media (min-width: $tablet) {
+					font-size: 18px;
+				}
 
 				a {
 					color: $dark;
+					display: none;
 					font-variation-settings: "wght" 200;
 
 					&:hover {
 						text-decoration: none;
 						font-variation-settings: "wght" 800, "CASL" 1;
+					}
+
+					@media (min-width: $phone) {
+						display: block;
+					}
+
+					&.mobile {
+						display: block;
+
+						@media (min-width: $phone) {
+							display: none;
+						}
 					}
 				}
 			}
@@ -88,20 +98,31 @@ const { navMenu, generalSettings } = Astro.props;
 				padding-bottom: 0;
 
 				li {
-					margin-right: 2rem;
+					margin-right: 15px;
 					margin-top: 0;
 					margin-bottom: 0;
+
+					@media (min-width: $tablet) {
+						margin-right: 20px;
+					}
 
 					a {
 						color: $pink;
 						font-weight: bold;
+						font-size: 14px;
+
+						@media (min-width: $tablet) {
+							font-size: 17px;
+						}
 					}
 
 					&:first-child {
 						margin-top: 0;
 					}
-					&:last-child {
-						margin-right: 0;
+					@media (min-width: $tablet) {
+						&:last-child {
+							margin-right: 0;
+						}
 					}
 				}
 			}

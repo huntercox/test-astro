@@ -47,8 +47,16 @@ const colors = [
 
 	.skills {
 		&-list {
-			column-count: 3;
-			column-gap: 20px;
+			column-count: 1;
+
+			@media (min-width: $tablet) {
+				column-count: 2;
+				column-gap: 20px;
+			}
+
+			@media (min-width: $laptop) {
+				column-count: 3;
+			}
 
 			.skill {
 				text-align: center;

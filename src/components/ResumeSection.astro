@@ -84,8 +84,11 @@ const { pageBy, employers } = res;
 	.employer {
 		border-radius: 3px;
 		border: 1px solid $green;
-		overflow: hidden;
-		margin-bottom: 0;
+		margin-bottom: 30px;
+
+		@media (min-width: $tablet) {
+			margin-bottom: 0;
+		}
 
 		// Current Employer
 		&.current {

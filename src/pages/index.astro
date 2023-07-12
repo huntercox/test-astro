@@ -17,10 +17,12 @@ import SkillsSection from "../components/SkillsSection.astro";
 ---
 
 <MainLayout title="Home Page">
-	<div class="container">
-		{pageBy.title}
-		<div class="content" set:html={pageBy.content} />
-	</div>
+	<section class="intro">
+		<div class="container">
+			{pageBy.title}
+			<div class="content" set:html={pageBy.content} />
+		</div>
+	</section>
 
 	<!-- Projects -->
 	<ProjectsSection />
@@ -53,55 +55,13 @@ import SkillsSection from "../components/SkillsSection.astro";
 <style lang="scss">
 	@import "../styles/vars";
 
-	.content {
-		font-size: 18px;
-		padding-top: 30px;
-		padding-bottom: 50px;
-	}
-
-	.projects {
-		background-color: $green;
-		padding: 0px 0 50px 0;
-
-		&__header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 20px;
-
-			h2 {
-				margin: 0;
-				padding: 0;
-				background-color: none;
-				font-variation-settings: "MONO" 1, "CASL" 1, "wght" 600, "slnt" -5,
-					"CRSV" 1;
-			}
-			.profile-link {
-				background-color: $pink;
-				padding: 10px 20px;
-				color: $dark;
-				font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800, "slnt" -5,
-					"CRSV" 1;
-			}
-		}
-
-		.repos-list {
-			display: grid;
-			grid-template-columns: 1fr;
-
-			@media (min-width: $tablet) {
-				gap: 20px;
-				grid-template-columns: 1fr 1fr;
-			}
-
-			@media (min-width: $laptop) {
-				grid-template-columns: 1fr 1fr 1fr;
-			}
-		}
-		.repo {
-			background-color: $dark;
-			margin: 5px 0;
-			padding: 20px;
+	.intro {
+		.content {
+			font-size: 18px;
+			padding-top: 30px;
+			padding-bottom: 50px;
+			word-wrap: break-word;
+			word-break: keep-all;
 		}
 	}
 </style>
