@@ -45,13 +45,22 @@ const profileLink = await getProfileLink();
 			justify-content: space-between;
 			align-items: center;
 			margin-bottom: 20px;
+			flex-direction: column;
+
+			@media (min-width: $phone) {
+				flex-direction: row;
+			}
 
 			h2 {
-				margin: 0;
+				margin: 0 0 20px 0;
 				padding: 0;
 				background-color: none;
 				font-variation-settings: "MONO" 1, "CASL" 1, "wght" 600, "slnt" -5,
 					"CRSV" 1;
+
+				@media (min-width: $phone) {
+					margin: 0;
+				}
 			}
 			.profile-link {
 				background-color: $pink;
